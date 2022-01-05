@@ -11,11 +11,6 @@ import org.pneditor.petrinet.models.fuxin.arc.ArcZero;
 import org.pneditor.petrinet.models.fuxin.exception.DoubleArcException;
 
 
-/**
- * 
- */
-
-
 public class PetriNetworkImpl implements PetriNetwork{
 	
 	private Set<Place> placeSet;
@@ -189,7 +184,9 @@ public class PetriNetworkImpl implements PetriNetwork{
 	@Override
 	public void deleteTransition(Transition transition) {
 		// TODO Auto-generated method stub
-		arcSet.removeAll(transition.getArcSet());
+		if(arcSet != null) {
+			arcSet.removeAll(transition.getArcSet());
+		}
 		transitionSet.remove(transition);
 		
 		
@@ -199,19 +196,23 @@ public class PetriNetworkImpl implements PetriNetwork{
 		return transitionSet.size();
 	}
 	
+	@Override
+	public boolean isEnable(Transition transition) {
+		// TODO Auto-generated method stub
+		return transition.isTriggerable();
+	}
+	
 	/* (non-Javadoc)
 	 * @see PetriNetwork.PetriNetwork#fire()
 	 */
 	@Override
-	public void fire() {
+	public void fire(Transition transition) {
 		// TODO Auto-generated method stub
-		for(Transition transition : transitionSet){
-			if(transition.isTriggerable()){
-				transition.doFire();
-			}
-		}
+		transition.doFire();
 		
 	}
+	
+	
 	@Override
 	public String toString() {
 		return "PetriNetworkImpl [placeSet=" + placeSet + ", arcSet=" + arcSet + ", transitionSet=" + transitionSet
@@ -251,11 +252,6 @@ public class PetriNetworkImpl implements PetriNetwork{
 		return sbuffer.toString();
 			
 	}
-	
-	
-
-	
-
 	
 
 }

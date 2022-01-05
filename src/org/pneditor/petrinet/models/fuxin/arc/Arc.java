@@ -5,7 +5,6 @@ import java.util.Objects;
 import org.pneditor.petrinet.models.fuxin.petrinetwork.Place;
 import org.pneditor.petrinet.models.fuxin.petrinetwork.Transition;
 
-
 public class Arc {
 	
 	private Place place;

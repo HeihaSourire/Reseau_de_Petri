@@ -129,7 +129,9 @@ public interface PetriNetwork {
 	 * Make Transition perform an action  
 	 * @author FU Wenjie XIN Yuhua
 	 */
-	public void fire();
+	public void fire(Transition transition);
+	
+	public boolean isEnable(Transition transition);
 	
 	/**
 	 * Print out the PetriNetwork as a string  

@@ -35,6 +35,7 @@ public class ArcZero extends ArcEntered{
 			return false;
 		}
 		
+		
 		return true;
 	}
 
